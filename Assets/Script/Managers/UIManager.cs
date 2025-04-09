@@ -70,7 +70,7 @@ public class UIManager
             if (panel.active)
             {
                 Debug.LogError("界面已打开");
-                return null;
+                return panel;
             }
             else
             {
@@ -91,44 +91,7 @@ public class UIManager
         panel.active = true;
         return panel;
     }
-    public T TryOpenPanel<T>() where T : BasePanel
-    {
-        T panel = ExistPanels.Find(panel => panel is T) as T;
-        if (panel != null)
-        {
-            if (!panel.active)
-            {
-                panel.OpenPanel<T>();
-            }
-            return panel;
-        }
-        //若未加载，加载prefab
-        string name = typeof(T).ToString();
-        if (!PrefabDict.TryGetValue(name, out GameObject panelPrefab))
-        {
-            panelPrefab = Resources.Load<GameObject>("Prefabs/UIPanels/" + typeof(T).ToString());
-            PrefabDict.Add(name, panelPrefab);
-        }
-        //加载界面
-        panel = GameObject.Instantiate(panelPrefab, UIRoot, false).GetComponent<BasePanel>() as T;
-        ExistPanels.Add(panel);
-        panel.active = true;
-        return panel;
-    }
-    public void ClosePanel<T>() where T : BasePanel
-    {
-        BasePanel panel = ExistPanels.Find(panel => panel is T);
-        if (panel == null)
-        {
-            Debug.LogError("界面未打开");
-        }
-        if (!panel.active)
-        {
-            Debug.LogError("界面未打开");
-        }
-        panel.ClosePanel<T>();
-    }
-    public bool TryClosePanel<T>() where T : BasePanel
+    public bool ClosePanel<T>() where T : BasePanel
     {
         BasePanel panel = ExistPanels.Find(panel => panel is T);
         if (panel == null)
@@ -142,6 +105,7 @@ public class UIManager
         panel.ClosePanel<T>();
         return true;
     }
+    //切换开/关状态
     public void TogglePanel<T>() where T : BasePanel
     {
         BasePanel panel = ExistPanels.Find(panel => panel is T);
