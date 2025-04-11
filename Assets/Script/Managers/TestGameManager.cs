@@ -7,5 +7,10 @@ public class TestGameManager : MonoBehaviour
     void Start()
     {
         UIManager.Instance.OpenPanel<OptionsPanel>();
+        UIManager.Instance.OpenPanel<InventoryPanel>();
+    }
+    void Update()
+    {
+
     }
 }
