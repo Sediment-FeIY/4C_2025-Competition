@@ -107,7 +107,7 @@ public class SceneLoader : MonoBehaviour
                 return;
             }
             level1.onClick.AddListener(() => StartCoroutine(LoadScene("Level1")));
-            level2.onClick.AddListener(() => StartCoroutine(LoadScene("Level2")));
+            level2.onClick.AddListener(() => StartCoroutine(LoadScene("Scene2")));
             level3.onClick.AddListener(() => StartCoroutine(LoadScene("Level3")));
 
         }
