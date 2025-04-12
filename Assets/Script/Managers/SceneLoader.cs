@@ -9,11 +9,13 @@ public class SceneLoader : MonoBehaviour
 {
     private GameObject eventObj;
     private Button startButton;
+    private Button quitButton;
     private Button level1;
     private Button level2;
     private Button level3;
     private GameObject start;
-    
+    private GameObject quit;
+
     public Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -22,16 +24,26 @@ public class SceneLoader : MonoBehaviour
         GameObject.DontDestroyOnLoad(this.gameObject);
         GameObject.DontDestroyOnLoad(this.eventObj);
         startButton = GameObject.Find("startButton").GetComponent<Button>();
-       
+        quitButton = GameObject.Find("quitButton").GetComponent<Button>();
+
 
         start = GameObject.Find("startButton");
+        quit = GameObject.Find("quitButton");
         startButton.onClick.AddListener(ChooseLevel);
+        quitButton.onClick.AddListener(QuitGame);
     }
 
     private void ChooseLevel()
     {
         StartCoroutine(LoadScene("LevelSelect"));
         StartCoroutine(ButtonShow(false, start));
+        StartCoroutine(ButtonShow(false, quit));
+    }
+
+    private void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Game is exiting");
     }
 
     IEnumerator ButtonShow(bool isShowed,GameObject name)
