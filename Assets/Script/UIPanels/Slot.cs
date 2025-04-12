@@ -7,6 +7,7 @@ public class Slot : Interactable
 {
     override public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Hello World");
+        Debug.Log("OnPointerEnter");
     }
+    GameObject item;
 }
