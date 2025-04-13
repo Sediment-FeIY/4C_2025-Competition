@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestGameManager : MonoBehaviour
+public class TestGameManager : Singleton<TestGameManager>
 {
     void Start()
     {
@@ -13,4 +13,5 @@ public class TestGameManager : MonoBehaviour
     {
 
     }
+    public ItemObject draggedItem;
 }
