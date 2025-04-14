@@ -46,6 +46,11 @@ public class Telescope : MonoBehaviour
         }
     }
 
+    private void ScopeActive()
+    {
+        isTelescopeActive=true;
+    }
+
         // Update is called once per frame
         void Update()
     {

@@ -26,9 +26,9 @@ public class SceneLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        eventObj = GameObject.Find("EventSystem");
+       
         GameObject.DontDestroyOnLoad(this.gameObject);
-        GameObject.DontDestroyOnLoad(this.eventObj);
+
         startButton = GameObject.Find("startButton").GetComponent<Button>();
         quitButton = GameObject.Find("quitButton").GetComponent<Button>();
 
