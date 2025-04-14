@@ -7,9 +7,10 @@ public class Lock : MonoBehaviour
 {
     private GameObject lockButton;
     private Button lockBt;
+    private GameObject unlock;
+    private Button unlockButton;
 
     private GameObject lockPanel;
-    private bool lockActive = false;
 
 
     private Text one;
@@ -35,6 +36,13 @@ public class Lock : MonoBehaviour
         lockButton = GameObject.Find("Lock");
         lockBt = lockButton.GetComponent<Button>();
         lockBt.onClick.AddListener(() => Debug.Log("锁定按钮被点击了"));
+        lockBt.onClick.AddListener(() => OnLockClicked());
+
+
+
+        unlock = GameObject.Find("解锁");
+        unlockButton = unlock.GetComponent<Button>();
+        unlockButton.onClick.AddListener(() => Unlock());
 
         one = GameObject.Find("第一位").GetComponent<Text>();
         two = GameObject.Find("第二位").GetComponent<Text>();
@@ -61,6 +69,9 @@ public class Lock : MonoBehaviour
         two.text = numbers[index2];
         three.text = numbers[index3];
         four.text = numbers[index4];
+
+        lockPanel = GameObject.Find("LockScreen");
+        lockPanel.SetActive(false);
     }
 
     private void NumberPlus(int index)
@@ -105,12 +116,34 @@ public class Lock : MonoBehaviour
 
     private void OnLockClicked()
     {
-
+            lockPanel.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void CloseLockPanel()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            lockPanel.SetActive(false);
+        }
     }
+
+    private void Unlock()
+    {
+        if (one.text == "四" && two.text == "六" && three.text == "八" && four.text == "三")
+        {
+            lockPanel.SetActive(false);
+            Debug.Log("解锁成功");
+        }
+        else
+        {
+            Debug.Log("解锁失败");
+        }
+    }
+
+        // Update is called once per frame
+        void Update()
+        {
+            CloseLockPanel();
+        }
+   
 }
