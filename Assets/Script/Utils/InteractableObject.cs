@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class InteractableObject : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class InteractableObject : MonoBehaviour
                 OnPointerExit();
             }
         }
+    }
+    public void SetPosition(Vector3 screenPos)
+    {
+        var position = Camera.main.ScreenToWorldPoint(screenPos);
+        transform.position = new Vector3(position.x, position.y, transform.position.z);
     }
     virtual public void OnPointerEnter()
     {

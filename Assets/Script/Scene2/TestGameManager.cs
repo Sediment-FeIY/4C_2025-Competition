@@ -13,5 +13,5 @@ public class TestGameManager : Singleton<TestGameManager>
     {
 
     }
-    public ItemObject draggedItem;
+    public Item draggedItem;
 }

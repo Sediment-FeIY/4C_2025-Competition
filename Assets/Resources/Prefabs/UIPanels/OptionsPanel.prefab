@@ -1367,8 +1367,12 @@ PrefabInstance:
       value: OptionsPanel
       objectReference: {fileID: 0}
     - target: {fileID: 8485738419301966371, guid: cddc70ff45d3a13038975beab3de3265, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485738419301966371, guid: cddc70ff45d3a13038975beab3de3265, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8840373151812622250, guid: cddc70ff45d3a13038975beab3de3265, type: 3}
       propertyPath: m_Pivot.x

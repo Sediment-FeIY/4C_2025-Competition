@@ -11,7 +11,18 @@ public class GameManager : Singleton<GameManager>
     }
     void Update()
     {
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var colliders = Physics2D.OverlapPointAll(position);
+            foreach (var collider in colliders)
+            {
+                if (collider.gameObject.name == "door")
+                {
+                    GameManager.Instance.SwitchScene();
+                }
+            }
+        }
     }
     public void SwitchScene()
     {

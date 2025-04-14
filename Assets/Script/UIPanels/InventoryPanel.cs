@@ -8,6 +8,7 @@ public class InventoryPanel : BasePanel
     new void Start()
     {
         base.Start();
+        GetComponent<Canvas>().worldCamera = Camera.main;
     }
     void Update()
     {

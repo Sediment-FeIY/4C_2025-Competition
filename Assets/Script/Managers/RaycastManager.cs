@@ -8,6 +8,7 @@ public class RaycastManager : MonoBehaviour
     void Awake()
     {
         isPointerOverObjects = new List<InteractableObject>();
+        isDraggingObjects = new List<InteractableObject>();
     }
     void Update()
     {
@@ -38,17 +39,19 @@ public class RaycastManager : MonoBehaviour
             {
                 obj.OnPointerClick();
                 obj.OnDragBegin();
+                isDraggingObjects.Add(obj);
             }
         }
         if (Input.GetMouseButton(0))
         {
-            foreach (var obj in isPointerOverObjects)
+            foreach (var obj in isDraggingObjects)
             {
                 obj.OnDrag();
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
+            isDraggingObjects.Clear();
             foreach (var obj in isPointerOverObjects)
             {
                 obj.OnPointerUp();
@@ -57,4 +60,5 @@ public class RaycastManager : MonoBehaviour
         }
     }
     private List<InteractableObject> isPointerOverObjects;
+    private List<InteractableObject> isDraggingObjects;
 }

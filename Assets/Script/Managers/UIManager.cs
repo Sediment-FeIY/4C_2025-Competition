@@ -26,13 +26,13 @@ public class UIManager
         {
             if (_uiRoot == null)
             {
-                if (GameObject.Find("Canvas"))
+                if (GameObject.Find("Panel_Canvas"))
                 {
-                    _uiRoot = GameObject.Find("Canvas").transform;
+                    _uiRoot = GameObject.Find("Panel_Canvas").transform;
                 }
                 else
                 {
-                    _uiRoot = new GameObject("Canvas").transform;
+                    _uiRoot = new GameObject("Panel_Canvas").transform;
                 }
             }
             return _uiRoot;
