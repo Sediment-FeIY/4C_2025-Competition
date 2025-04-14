@@ -7,6 +7,7 @@ public class PaperMan : MonoBehaviour
 {
     public GameObject[] PaperMen;
     public GameObject[] PaperWomen;
+    public DialogueScene2 ds;
 
     public void Dance()
     {
@@ -77,5 +78,6 @@ public class PaperMan : MonoBehaviour
         {
             x.transform.DORotate(new Vector3(0, 0, 0), 0.5f);
         }
+        ds.playDialogue(4);
     }
 }

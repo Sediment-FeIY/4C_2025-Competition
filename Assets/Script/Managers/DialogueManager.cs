@@ -9,12 +9,17 @@ public class DialogueManager : MonoBehaviour
     public Image Speaker;
     public Text SpeakerName;
     public Text dialogueText;
+    public int[] SpeakerOrder;
     public string[] dialogues;
+    public string[] SpeakerNames;
+    public Sprite[] Heads;
     public int L, R;
     IEnumerator Dialogue()
     {
         dialogueText.text = dialogues[L];
         dialogue.SetActive(true);
+        Speaker.sprite = Heads[SpeakerOrder[L]];
+        SpeakerName.text = SpeakerNames[SpeakerOrder[L]];
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E));
         if (L < R)
         {
@@ -23,12 +28,12 @@ public class DialogueManager : MonoBehaviour
         }else
         {
             StopAllCoroutines();
+            dialogue.SetActive(false);
         }
     }
 
-    public void StartDialogue(int l,int r,Sprite head)
+    public void StartDialogue(int l,int r)
     {
-        Speaker.sprite = head;
         L = l; R = r;
         StartCoroutine(Dialogue());
     }
@@ -38,4 +43,9 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(Dialogue());
     }
 
+
+    public void Test()
+    {
+        StartDialogue(0, 14);
+    }
 }
