@@ -6,7 +6,6 @@ public class GameManager : Singleton<GameManager>
 {
     void Start()
     {
-        UIManager.Instance.OpenPanel<OptionsPanel>();
         UIManager.Instance.OpenPanel<InventoryPanel>();
     }
     void Update()
@@ -28,11 +27,22 @@ public class GameManager : Singleton<GameManager>
     {
         if (scene1.activeSelf)
         {
+            var panel = UIManager.Instance.GetPanel<InventoryPanel>();
+            foreach (var item in panel.itemList)
+            {
+                item.gameObject.transform.SetParent(scene2.transform, true);
+            }
+            scene1.SetActive(false);
             scene2.SetActive(true);
             scene1.SetActive(false);
         }
         else
         {
+            var panel = UIManager.Instance.GetPanel<InventoryPanel>();
+            foreach (var item in panel.itemList)
+            {
+                item.gameObject.transform.SetParent(scene1.transform, true);
+            }
             scene1.SetActive(true);
             scene2.SetActive(false);
         }

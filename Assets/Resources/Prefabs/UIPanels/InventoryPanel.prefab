@@ -211,11 +211,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1064418453940713904}
+  - {fileID: 5769745391686519129}
+  - {fileID: 654492601406470373}
   - {fileID: 7345175815116766350}
   - {fileID: 8037991377861581989}
   - {fileID: 4118558012905318834}
-  - {fileID: 5769745391686519129}
-  - {fileID: 654492601406470373}
   m_Father: {fileID: 6608419639777169856}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -855,6 +855,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  itemList: []
+  slotList:
+  - {fileID: 3064668524276117011}
+  - {fileID: 5441149117998722564}
+  - {fileID: 3240192293411394665}
+  - {fileID: 9004742876854021672}
+  - {fileID: 5601745678263155307}
+  - {fileID: 7076679183144906664}
 --- !u!224 &6608419639777169856 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8840373151812622250, guid: cddc70ff45d3a13038975beab3de3265, type: 3}

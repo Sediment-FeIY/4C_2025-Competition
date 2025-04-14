@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,6 +19,7 @@ public class Item : InteractableObject
     }
     public override void OnDragEnd()
     {
+        bool inSlot = false;
         List<RaycastResult> results = RaycastAllUI(Input.mousePosition);
         foreach (var result in results)
         {
@@ -28,11 +30,30 @@ public class Item : InteractableObject
                     Camera.main,
                     slot.transform.position);
                 slot.item.SetPosition(screenPos);
+                UIManager.Instance.GetPanel<InventoryPanel>().AddItem(this);
+                inSlot = true;
+                break;
+            }
+        }
+        if (!inSlot)
+        {
+            var panel = UIManager.Instance.GetPanel<InventoryPanel>();
+            var list = panel.itemList;
+            if (list.Contains(this))
+            {
+                list.Remove(this);
+            }
+            foreach (var slot in panel.slotList)
+            {
+                if (slot.item == this)
+                {
+                    slot.item = null;
+                }
             }
         }
         GameManager.Instance.draggedItem = null;
     }
-    private List<RaycastResult> RaycastAllUI(Vector2 screenPos)
+    public List<RaycastResult> RaycastAllUI(Vector2 screenPos)
     {
         List<RaycastResult> results = new List<RaycastResult>();
         foreach (var canvas in FindObjectsOfType<Canvas>())
