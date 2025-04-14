@@ -8,13 +8,19 @@ using System;
 public class SceneLoader : MonoBehaviour
 {
     private GameObject eventObj;
+    private GameObject start;
+    private GameObject quit;
     private Button startButton;
-    private Button quitButton;
+    private Button quitButton;  
     private Button level1;
     private Button level2;
     private Button level3;
-    private GameObject start;
-    private GameObject quit;
+
+    private GameObject menu;
+    private Button menuButton;
+
+    private GameObject hint;
+    private Button hintButton;
 
     public Animator animator;
     // Start is called before the first frame update
@@ -31,6 +37,18 @@ public class SceneLoader : MonoBehaviour
         quit = GameObject.Find("quitButton");
         startButton.onClick.AddListener(ChooseLevel);
         quitButton.onClick.AddListener(QuitGame);
+
+        menu = GameObject.Find("Menu");
+        menuButton = menu.GetComponent<Button>();
+
+        menu.SetActive(false);
+
+
+        hint = GameObject.Find("Hint");
+        hintButton = hint.GetComponent<Button>();
+
+        hint.SetActive(false);
+
     }
 
     private void ChooseLevel()
@@ -122,6 +140,8 @@ public class SceneLoader : MonoBehaviour
             level2.onClick.AddListener(() => StartCoroutine(LoadScene("Scene2")));
             level3.onClick.AddListener(() => StartCoroutine(LoadScene("Scene3")));
 
+            menu.SetActive(true);
+            hint.SetActive(true);
         }
        
     }
