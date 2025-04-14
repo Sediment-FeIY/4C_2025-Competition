@@ -11,7 +11,7 @@ public class SceneLoader : MonoBehaviour
     private GameObject start;
     private GameObject quit;
     private Button startButton;
-    private Button quitButton;  
+    private Button quitButton;
     private Button level1;
     private Button level2;
     private Button level3;
@@ -40,6 +40,7 @@ public class SceneLoader : MonoBehaviour
 
         menu = GameObject.Find("Menu");
         menuButton = menu.GetComponent<Button>();
+        menuButton.onClick.AddListener(UIManager.Instance.TogglePanel<OptionsPanel>);
 
         menu.SetActive(false);
 
@@ -64,7 +65,7 @@ public class SceneLoader : MonoBehaviour
         Debug.Log("Game is exiting");
     }
 
-    IEnumerator ButtonShow(bool isShowed,GameObject name)
+    IEnumerator ButtonShow(bool isShowed, GameObject name)
     {
         yield return new WaitForSeconds(1f);
 
@@ -98,7 +99,10 @@ public class SceneLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.F11))
+        {
+            Screen.fullScreen = !Screen.fullScreen;
+        }
     }
 
     private void OnEnable()
@@ -108,7 +112,7 @@ public class SceneLoader : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
     {
-        if(scene.name== "LevelSelect")
+        if (scene.name == "LevelSelect")
         {
             if (GameObject.Find("Level1").GetComponent<Button>() != null)
             {
@@ -119,7 +123,7 @@ public class SceneLoader : MonoBehaviour
                 return;
             }
 
-            if(GameObject.Find("Level2").GetComponent<Button>() != null)
+            if (GameObject.Find("Level2").GetComponent<Button>() != null)
             {
                 level2 = GameObject.Find("Level2").GetComponent<Button>();
             }
@@ -128,7 +132,7 @@ public class SceneLoader : MonoBehaviour
                 return;
             }
 
-            if(GameObject.Find("Level3").GetComponent<Button>() != null)
+            if (GameObject.Find("Level3").GetComponent<Button>() != null)
             {
                 level3 = GameObject.Find("Level3").GetComponent<Button>();
             }
@@ -143,6 +147,6 @@ public class SceneLoader : MonoBehaviour
             menu.SetActive(true);
             hint.SetActive(true);
         }
-       
+
     }
 }
