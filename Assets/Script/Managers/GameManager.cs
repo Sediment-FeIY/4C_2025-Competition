@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     void Start()
     {
         var panel = UIManager.Instance.OpenPanel<InventoryPanel>();
-        panel.AddItem(GameObject.Find("paper").GetComponent<Item>());
+        if (SceneManager.GetActiveScene().name == "Scene1")
+        {
+            panel.AddItem(GameObject.Find("paper").GetComponent<Item>());
+        }
     }
     void Update()
     {
