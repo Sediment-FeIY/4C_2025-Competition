@@ -6,7 +6,8 @@ public class GameManager : Singleton<GameManager>
 {
     void Start()
     {
-        UIManager.Instance.OpenPanel<InventoryPanel>();
+        var panel = UIManager.Instance.OpenPanel<InventoryPanel>();
+        panel.AddItem(GameObject.Find("paper").GetComponent<Item>());
     }
     void Update()
     {
