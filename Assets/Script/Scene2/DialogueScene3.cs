@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueScene3 : MonoBehaviour
 {
     public DialogueManager manager;
+    public bool tele = false;
     void Start()
     {
         playDialogue(0);
@@ -18,17 +19,25 @@ public class DialogueScene3 : MonoBehaviour
                 manager.StartDialogue(0, 7);
                 break;
             case 1:
-                manager.StartDialogue(15, 16);
+                manager.StartDialogue(8, 9);
                 break;
             case 2:
-                manager.StartDialogue(17, 17);
+                manager.StartDialogue(10, 10);
                 break;
             case 3:
-                manager.StartDialogue(18, 18);
+                manager.StartDialogue(11, 16);
                 break;
-            case 4:
-                manager.StartDialogue(19, 28);
-                break;
+
         }
+    }
+
+    public void Telescope()
+    {
+        if (!tele)
+        {
+            tele = true;
+            playDialogue(1);
+        }
+       
     }
 }
