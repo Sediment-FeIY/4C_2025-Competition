@@ -13,6 +13,10 @@ public class GameManager : Singleton<GameManager>
         {
             panel.AddItem(GameObject.Find("paper").GetComponent<Item>());
         }
+        if (SceneManager.GetActiveScene().name == "Scene3")
+        {
+            panel.AddItem(GameObject.Find("fat mirror").GetComponent<Item>());
+        }
     }
     void Update()
     {

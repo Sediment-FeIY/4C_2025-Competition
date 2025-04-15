@@ -28,26 +28,26 @@ public class Lock : MonoBehaviour
     private Button B3;
     private Button B4;
 
-    private int index1=0, index2=0, index3 = 0, index4=0;
+    private int index1 = 0, index2 = 0, index3 = 0, index4 = 0;
     private string[] numbers;
 
     void Start()
     {
-        lockButton = GameObject.Find("Lock");
-        lockBt = lockButton.GetComponent<Button>();
-        lockBt.onClick.AddListener(() => Debug.Log("锁定按钮被点击了"));
-        lockBt.onClick.AddListener(() => OnLockClicked());
+        // lockButton = GameObject.Find("Lock");
+        // lockBt = lockButton.GetComponent<Button>();
+        // lockBt.onClick.AddListener(() => Debug.Log("锁定按钮被点击了"));
+        // lockBt.onClick.AddListener(() => OnLockClicked());
 
 
 
-        unlock = GameObject.Find("解锁");
+        unlock = GameObject.Find("Unlock");
         unlockButton = unlock.GetComponent<Button>();
         unlockButton.onClick.AddListener(() => Unlock());
 
-        one = GameObject.Find("第一位").GetComponent<Text>();
-        two = GameObject.Find("第二位").GetComponent<Text>();
-        three = GameObject.Find("第三位").GetComponent<Text>();
-        four = GameObject.Find("第四位").GetComponent<Text>();
+        one = GameObject.Find("1st").GetComponent<Text>();
+        two = GameObject.Find("2nd").GetComponent<Text>();
+        three = GameObject.Find("3rd").GetComponent<Text>();
+        four = GameObject.Find("4th").GetComponent<Text>();
 
         Button1 = GameObject.Find("Button1");
         Button2 = GameObject.Find("Button2");
@@ -63,7 +63,7 @@ public class Lock : MonoBehaviour
         B3.onClick.AddListener(() => NumberPlus(3));
         B4.onClick.AddListener(() => NumberPlus(4));
 
-        numbers = new string[] { "一","二","三","四","五","六","七","八","九"};
+        numbers = new string[] { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
 
         one.text = numbers[index1];
         two.text = numbers[index2];
@@ -76,10 +76,10 @@ public class Lock : MonoBehaviour
 
     private void NumberPlus(int index)
     {
-       if(index==1)
+        if (index == 1)
         {
             index1++;
-            if(index1>8)
+            if (index1 > 8)
             {
                 index1 = 0;
             }
@@ -114,14 +114,14 @@ public class Lock : MonoBehaviour
         }
     }
 
-    private void OnLockClicked()
-    {
-            lockPanel.SetActive(true);
-    }
+    // private void OnLockClicked()
+    // {
+    //     lockPanel.SetActive(true);
+    // }
 
     private void CloseLockPanel()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             lockPanel.SetActive(false);
         }
@@ -140,10 +140,10 @@ public class Lock : MonoBehaviour
         }
     }
 
-        // Update is called once per frame
-        void Update()
-        {
-            CloseLockPanel();
-        }
-   
+    // Update is called once per frame
+    void Update()
+    {
+        CloseLockPanel();
+    }
+
 }

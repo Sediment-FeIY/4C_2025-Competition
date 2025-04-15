@@ -14,19 +14,19 @@ public class Telescope : MonoBehaviour
     private bool isTelescopeActive = false;
     void Start()
     {
-        telescopeButton = GameObject.Find("Telescope");
-        telescope = telescopeButton.GetComponent<Button>();
-        teleTrue = GameObject.Find("TelescopeTrue");
-        teleFalse = GameObject.Find("TelescopeFalse");
-        teleTrue.SetActive(false);
-        teleFalse.SetActive(false);
-        telescope.onClick.AddListener(OnTelescopeClick);
+        // telescopeButton = GameObject.Find("Telescope");
+        // telescope = telescopeButton.GetComponent<Button>();
+        // teleTrue = GameObject.Find("TelescopeTrue");
+        // teleFalse = GameObject.Find("TelescopeFalse");
+        // teleTrue.SetActive(false);
+        // teleFalse.SetActive(false);
+        // telescope.onClick.AddListener(OnTelescopeClick);
     }
 
     //目前打算是设置一个bool变量，放好道具之前为false，放好道具之后为true，根据true和false来判断是否显示放大图
     private void OnTelescopeClick()
     {
-        if(isTelescopeActive)
+        if (isTelescopeActive)
         {
             teleTrue.SetActive(true);
         }
@@ -48,12 +48,12 @@ public class Telescope : MonoBehaviour
 
     private void ScopeActive()
     {
-        isTelescopeActive=true;
+        isTelescopeActive = true;
     }
 
-        // Update is called once per frame
-        void Update()
+    // Update is called once per frame
+    void Update()
     {
-        Cancel();
+        // Cancel();
     }
 }
