@@ -10,9 +10,6 @@ using UnityEngine.UI;
 
 public class Item : InteractableObject
 {
-    public bool hammer;
-    public bool isBurned;
-    public DialogueScene2 ds;
     public override void OnDragBegin()
     {
         GameManager.Instance.draggedItem = this;
@@ -73,36 +70,4 @@ public class Item : InteractableObject
         return results;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        tunningFork temp = collision.GetComponent<tunningFork>();
-        if (!hammer)
-        {
-            temp.Fire();
-            transform.DOMove(new Vector3(4.3f, 0.4f, 0), 0.5f);
-            transform.DOScale(new Vector3(0.26f, 0.26f, 1f), 0.5f);
-            StartCoroutine(Death());
-        }
-        else
-        {
-            if (isBurned)
-            {
-                temp.Shake();
-                PaperMan PM = GameObject.Find("PaperMen").GetComponent<PaperMan>();
-                PM.Dance();
-            }
-            else
-            {
-                ds.playDialogue(3);
-            }
-
-        }
-    }
-
-    IEnumerator Death()
-    {
-        yield return new WaitForSeconds(2.5f);
-        GameObject.Find("hammer").GetComponent<Item>().isBurned = true;
-        transform.DOScale(new Vector3(0.13f, 0.13f, 1f), 0.5f);
-    }
 }

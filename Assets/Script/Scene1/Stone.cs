@@ -5,6 +5,16 @@ using UnityEngine.UI;
 
 public class Stone : Item
 {
+    public DialogueScene1 ds;
+    public bool flag = false;
+    private void OnMouseDown()
+    {
+        if (!flag)
+        {
+            flag = true;
+            ds.playDialogue(2);
+        }
+    }
     public override void OnDragEnd()
     {
         var hits = Physics2D.OverlapPointAll(transform.position);

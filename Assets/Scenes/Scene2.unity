@@ -445,6 +445,7 @@ GameObject:
   - component: {fileID: 148490375}
   - component: {fileID: 148490377}
   - component: {fileID: 148490378}
+  - component: {fileID: 148490379}
   m_Layer: 0
   m_Name: fat mirror
   m_TagString: Untagged
@@ -532,9 +533,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPointerOver: 0
-  hammer: 0
-  isBurned: 0
-  ds: {fileID: 0}
 --- !u!58 &148490378
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -570,6 +568,18 @@ CircleCollider2D:
   m_Offset: {x: -0.2931265, y: -0.00000091699457}
   serializedVersion: 2
   m_Radius: 2.2021735
+--- !u!114 &148490379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148490374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6208e5d8443a04a4bbe96b4017621299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &217155803
 GameObject:
   m_ObjectHideFlags: 0
@@ -2587,6 +2597,7 @@ GameObject:
   - component: {fileID: 1432255906}
   - component: {fileID: 1432255905}
   - component: {fileID: 1432255904}
+  - component: {fileID: 1432255908}
   m_Layer: 0
   m_Name: hammer
   m_TagString: Untagged
@@ -2652,9 +2663,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPointerOver: 0
-  hammer: 1
-  isBurned: 0
-  ds: {fileID: 1095595092}
 --- !u!212 &1432255906
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2722,6 +2730,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1432255908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432255903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba87559db7c7b1549888c968f9d4d3a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ds: {fileID: 1095595092}
+  isBurned: 0
 --- !u!1 &1452236174
 GameObject:
   m_ObjectHideFlags: 0
