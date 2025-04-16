@@ -19,9 +19,6 @@ public class SceneLoader : Singleton<SceneLoader>
     private GameObject menu;
     private Button menuButton;
 
-    private GameObject hint;
-    private Button hintButton;
-
     public Animator animator;
 
     public static bool levelSelect = false;
@@ -46,11 +43,6 @@ public class SceneLoader : Singleton<SceneLoader>
 
         menu.SetActive(false);
 
-
-        hint = GameObject.Find("Hint");
-        hintButton = hint.GetComponent<Button>();
-
-        hint.SetActive(false);
 
     }
 
@@ -153,7 +145,6 @@ public class SceneLoader : Singleton<SceneLoader>
             level3.onClick.AddListener(() => StartCoroutine(LoadScene("Scene3")));
 
             menu.SetActive(true);
-            hint.SetActive(true);
         }
 
     }
