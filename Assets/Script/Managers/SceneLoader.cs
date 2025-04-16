@@ -23,6 +23,8 @@ public class SceneLoader : MonoBehaviour
     private Button hintButton;
 
     public Animator animator;
+
+    private static bool levelSelect = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -108,6 +110,12 @@ public class SceneLoader : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        if(levelSelect)
+        {
+            StartCoroutine(LoadScene("LevelSelect"));
+            levelSelect = false;
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
@@ -149,4 +157,5 @@ public class SceneLoader : MonoBehaviour
         }
 
     }
+
 }
