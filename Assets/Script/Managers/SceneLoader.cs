@@ -76,6 +76,9 @@ public class SceneLoader : Singleton<SceneLoader>
 
     IEnumerator LoadScene(string sceneName)
     {
+        if (GameObject.Find(sceneName)) GameObject.Find(sceneName).transform.GetChild(0).gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        if (GameObject.Find(sceneName)) GameObject.Find(sceneName).transform.GetChild(0).gameObject.SetActive(false);
         animator.SetBool("FadeOut", true);
         animator.SetBool("FadeIn", false);
 
