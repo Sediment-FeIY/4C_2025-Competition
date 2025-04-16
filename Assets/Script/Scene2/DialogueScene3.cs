@@ -25,7 +25,7 @@ public class DialogueScene3 : MonoBehaviour
                 manager.StartDialogue(10, 10);
                 break;
             case 3:
-                manager.StartDialogue(11, 16);
+                manager.StartDialogue(11, 14);
                 break;
 
         }

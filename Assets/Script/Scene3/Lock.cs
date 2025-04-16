@@ -133,6 +133,8 @@ public class Lock : MonoBehaviour
         {
             lockPanel.SetActive(false);
             Debug.Log("½âËø³É¹¦");
+            DialogueScene3 temp = GameObject.Find("DialogueManager").GetComponent<DialogueScene3>();
+            temp.playDialogue(3);
         }
         else
         {

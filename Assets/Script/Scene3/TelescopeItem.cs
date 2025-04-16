@@ -10,10 +10,14 @@ public class TelescopeItem : MonoBehaviour
         if (isTelescopeActive)
         {
             teleTrue.SetActive(true);
+            DialogueScene3 temp = GameObject.Find("DialogueManager").GetComponent<DialogueScene3>();
+            temp.playDialogue(2);
         }
         else
         {
             teleFalse.SetActive(true);
+            DialogueScene3 temp = GameObject.Find("DialogueManager").GetComponent<DialogueScene3>();
+            temp.playDialogue(1);
         }
     }
     void Update()

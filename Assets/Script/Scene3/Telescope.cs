@@ -29,10 +29,12 @@ public class Telescope : MonoBehaviour
         if (isTelescopeActive)
         {
             teleTrue.SetActive(true);
+            
         }
         else
         {
             teleFalse.SetActive(true);
+            
         }
     }
 
@@ -56,4 +58,5 @@ public class Telescope : MonoBehaviour
     {
         // Cancel();
     }
+
 }

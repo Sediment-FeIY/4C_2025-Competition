@@ -9,6 +9,8 @@ public class tutoujing : MonoBehaviour
     {
         tunningFork temp = collision.GetComponent<tunningFork>();
         temp.Fire();
+        audioManager ad = GameObject.Find("audioManager").GetComponent<audioManager>();
+        ad.playSFX(3);
         transform.DOMove(new Vector3(4.3f, 0.4f, 0), 0.5f);
         transform.DOScale(new Vector3(0.26f, 0.26f, 1f), 0.5f);
         StartCoroutine(Death());

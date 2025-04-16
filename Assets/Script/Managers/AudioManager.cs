@@ -13,7 +13,9 @@ public class AudioManager : PersistentSingleton<AudioManager>
         BGMVolume = 1f;
         soundEffects = new Dictionary<string, AudioClip>()
         {
-            ["..."] = Resources.Load<AudioClip>("...")
+            ["..."] = Resources.Load<AudioClip>("..."),
+            ["fork1"] = Resources.Load<AudioClip>("fork1"),
+            ["fork2"] = Resources.Load<AudioClip>("fork2")
         };
         BGMs = new Dictionary<string, AudioClip>
         {
