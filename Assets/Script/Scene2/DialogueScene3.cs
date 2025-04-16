@@ -6,9 +6,20 @@ public class DialogueScene3 : MonoBehaviour
 {
     public DialogueManager manager;
     public bool tele = false;
+    private bool lastDialogue = false;
     void Start()
     {
         playDialogue(0);
+    }
+
+    void Update()
+    {
+        if (lastDialogue && DialogueManager.Instance.dialogueEnded)
+        {
+            SceneLoader.levelSelect = true;
+            SceneLoader.Instance.OnEnable();
+            lastDialogue = false;
+        }
     }
 
     public void playDialogue(int ind)
@@ -25,6 +36,7 @@ public class DialogueScene3 : MonoBehaviour
                 manager.StartDialogue(10, 10);
                 break;
             case 3:
+                lastDialogue = true;
                 manager.StartDialogue(11, 14);
                 break;
 
@@ -38,6 +50,6 @@ public class DialogueScene3 : MonoBehaviour
             tele = true;
             playDialogue(1);
         }
-       
+
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : Singleton<SceneLoader>
 {
     private GameObject eventObj;
     private GameObject start;
@@ -24,11 +24,11 @@ public class SceneLoader : MonoBehaviour
 
     public Animator animator;
 
-    private static bool levelSelect = false;
+    public static bool levelSelect = false;
     // Start is called before the first frame update
     void Start()
     {
-       
+
         GameObject.DontDestroyOnLoad(this.gameObject);
 
         startButton = GameObject.Find("startButton").GetComponent<Button>();
@@ -107,11 +107,11 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        if(levelSelect)
+        if (levelSelect)
         {
             StartCoroutine(LoadScene("LevelSelect"));
             levelSelect = false;

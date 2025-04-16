@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : Singleton<DialogueManager>
 {
     public GameObject dialogue;
     public Image Speaker;
@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     public string[] SpeakerNames;
     public Sprite[] Heads;
     public int L, R;
+    public bool dialogueEnded;
     IEnumerator Dialogue()
     {
         dialogueText.text = dialogues[L];
@@ -25,15 +26,18 @@ public class DialogueManager : MonoBehaviour
         {
             L++;
             Invoke("NextDialogue", 0.2f);
-        }else
+        }
+        else
         {
             StopAllCoroutines();
             dialogue.SetActive(false);
+            dialogueEnded = true;
         }
     }
 
-    public void StartDialogue(int l,int r)
+    public void StartDialogue(int l, int r)
     {
+        dialogueEnded = false;
         L = l; R = r;
         StartCoroutine(Dialogue());
     }

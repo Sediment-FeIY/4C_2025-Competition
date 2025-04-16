@@ -32,7 +32,11 @@ public class Item : InteractableObject
                     Camera.main,
                     slot.transform.position);
                 slot.item.SetPosition(screenPos);
-                UIManager.Instance.GetPanel<InventoryPanel>().AddItem(this);
+                var panel = UIManager.Instance.GetPanel<InventoryPanel>();
+                if (panel != null)
+                {
+                    panel.AddItem(this);
+                }
                 inSlot = true;
                 break;
             }
@@ -40,6 +44,7 @@ public class Item : InteractableObject
         if (!inSlot)
         {
             var panel = UIManager.Instance.GetPanel<InventoryPanel>();
+            if (panel == null) return;
             var list = panel.itemList;
             if (list.Contains(this))
             {

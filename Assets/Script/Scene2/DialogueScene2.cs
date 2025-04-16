@@ -5,9 +5,20 @@ using UnityEngine;
 public class DialogueScene2 : MonoBehaviour
 {
     public DialogueManager manager;
+    private bool lastDialogue = false;
     void Start()
     {
         playDialogue(0);
+    }
+
+    void Update()
+    {
+        if (lastDialogue && DialogueManager.Instance.dialogueEnded)
+        {
+            SceneLoader.levelSelect = true;
+            SceneLoader.Instance.OnEnable();
+            lastDialogue = false;
+        }
     }
 
     public void playDialogue(int ind)
@@ -27,6 +38,7 @@ public class DialogueScene2 : MonoBehaviour
                 manager.StartDialogue(22, 23);
                 break;
             case 4:
+                lastDialogue = true;
                 manager.StartDialogue(24, 29);
                 break;
         }
