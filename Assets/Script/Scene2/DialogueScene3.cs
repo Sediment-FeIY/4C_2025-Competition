@@ -16,7 +16,7 @@ public class DialogueScene3 : MonoBehaviour
     {
         if (lastDialogue && DialogueManager.Instance.dialogueEnded)
         {
-            SceneLoader.levelSelect = true;
+            SceneLoader.gameEnding = true;
             SceneLoader.Instance.OnEnable();
             lastDialogue = false;
         }

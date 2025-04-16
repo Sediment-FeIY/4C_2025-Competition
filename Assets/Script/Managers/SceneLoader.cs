@@ -22,6 +22,7 @@ public class SceneLoader : Singleton<SceneLoader>
     public Animator animator;
 
     public static bool levelSelect = false;
+    public static bool gameEnding = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -110,6 +111,12 @@ public class SceneLoader : Singleton<SceneLoader>
         {
             StartCoroutine(LoadScene("LevelSelect"));
             levelSelect = false;
+        }
+
+        if(gameEnding)
+        {
+            StartCoroutine(LoadScene("Ending"));
+            gameEnding = false;
         }
     }
 
