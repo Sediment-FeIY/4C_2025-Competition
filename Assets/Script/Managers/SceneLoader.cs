@@ -23,6 +23,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
     public static bool levelSelect = false;
     public static bool gameEnding = false;
+    public  bool firstCome = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -78,7 +79,7 @@ public class SceneLoader : Singleton<SceneLoader>
     IEnumerator LoadScene(string sceneName)
     {
         if (GameObject.Find(sceneName)) GameObject.Find(sceneName).transform.GetChild(0).gameObject.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         if (GameObject.Find(sceneName)) GameObject.Find(sceneName).transform.GetChild(0).gameObject.SetActive(false);
         animator.SetBool("FadeOut", true);
         animator.SetBool("FadeIn", false);
@@ -155,6 +156,12 @@ public class SceneLoader : Singleton<SceneLoader>
             level3.onClick.AddListener(() => StartCoroutine(LoadScene("Scene3")));
 
             menu.SetActive(true);
+            if (firstCome)
+            {
+                firstCome = false;
+                DialogueManager manager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+                manager.StartDialogue(0, 5);
+            }
         }
 
     }
