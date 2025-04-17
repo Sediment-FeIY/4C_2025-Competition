@@ -10,6 +10,7 @@ public class SceneLoader : Singleton<SceneLoader>
     private GameObject eventObj;
     private GameObject start;
     private GameObject quit;
+    private GameObject backGround;
     private Button startButton;
     private Button quitButton;
     private Button level1;
@@ -23,6 +24,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
     public static bool levelSelect = false;
     public static bool gameEnding = false;
+    public  bool firstCome = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
         startButton = GameObject.Find("startButton").GetComponent<Button>();
         quitButton = GameObject.Find("quitButton").GetComponent<Button>();
+        backGround = GameObject.Find("BackGround");
 
 
         start = GameObject.Find("startButton");
@@ -52,6 +55,8 @@ public class SceneLoader : Singleton<SceneLoader>
         StartCoroutine(LoadScene("LevelSelect"));
         StartCoroutine(ButtonShow(false, start));
         StartCoroutine(ButtonShow(false, quit));
+        StartCoroutine(ButtonShow(false, backGround));
+
     }
 
     private void QuitGame()
@@ -62,7 +67,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
     IEnumerator ButtonShow(bool isShowed, GameObject name)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
 
         if (isShowed)
         {
@@ -78,7 +83,7 @@ public class SceneLoader : Singleton<SceneLoader>
     IEnumerator LoadScene(string sceneName)
     {
         if (GameObject.Find(sceneName)) GameObject.Find(sceneName).transform.GetChild(0).gameObject.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         if (GameObject.Find(sceneName)) GameObject.Find(sceneName).transform.GetChild(0).gameObject.SetActive(false);
         animator.SetBool("FadeOut", true);
         animator.SetBool("FadeIn", false);
@@ -155,6 +160,12 @@ public class SceneLoader : Singleton<SceneLoader>
             level3.onClick.AddListener(() => StartCoroutine(LoadScene("Scene3")));
 
             menu.SetActive(true);
+            if (firstCome)
+            {
+                firstCome = false;
+                DialogueManager manager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
+                manager.StartDialogue(0, 5);
+            }
         }
 
     }
