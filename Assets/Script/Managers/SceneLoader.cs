@@ -10,6 +10,7 @@ public class SceneLoader : Singleton<SceneLoader>
     private GameObject eventObj;
     private GameObject start;
     private GameObject quit;
+    private GameObject backGround;
     private Button startButton;
     private Button quitButton;
     private Button level1;
@@ -32,6 +33,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
         startButton = GameObject.Find("startButton").GetComponent<Button>();
         quitButton = GameObject.Find("quitButton").GetComponent<Button>();
+        backGround = GameObject.Find("BackGround");
 
 
         start = GameObject.Find("startButton");
@@ -53,6 +55,8 @@ public class SceneLoader : Singleton<SceneLoader>
         StartCoroutine(LoadScene("LevelSelect"));
         StartCoroutine(ButtonShow(false, start));
         StartCoroutine(ButtonShow(false, quit));
+        StartCoroutine(ButtonShow(false, backGround));
+
     }
 
     private void QuitGame()
@@ -63,7 +67,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
     IEnumerator ButtonShow(bool isShowed, GameObject name)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
 
         if (isShowed)
         {
